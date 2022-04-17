@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.tradediary.screen.DiaryScreen
 import com.example.tradediary.ui.theme.TradeDiaryTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,10 +20,11 @@ class MainActivity : ComponentActivity() {
             TradeDiaryTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    DiaryApp{
+                        DiaryScreen()
+                    }
                 }
             }
         }
@@ -30,14 +32,17 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun DiaryApp(content: @Composable () -> Unit){
+    TradeDiaryTheme() {
+        content()
+    }
+
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     TradeDiaryTheme {
-        Greeting("Android")
+
     }
 }
