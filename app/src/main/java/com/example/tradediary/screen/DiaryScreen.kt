@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.tradediary.components.DiaryButton
 import com.example.tradediary.widgets.DiaryIcons
 
 
@@ -51,15 +52,9 @@ fun DropDown(){
         horizontalAlignment = Alignment.CenterHorizontally) {
         Text("Text input Company")
         Text("Text input Job description")
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .padding(4.dp))
-            {
-                Text("Save")
-            }
-
-        
+        DiaryButton(
+            text = "Save",
+            onClick = { /*TODO*/ },
+        )
     }
 }
