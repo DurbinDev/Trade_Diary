@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.rounded.AdsClick
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -17,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.tradediary.components.DiaryButton
 import com.example.tradediary.components.DiaryInputText
@@ -198,27 +200,40 @@ fun DiaryEntryRow(
             horizontalArrangement = Arrangement.SpaceBetween) {
             Column(
                 Modifier
-                    .clickable { }
-                    .padding(horizontal = 14.dp, vertical = 6.dp),
+                    .padding(horizontal = 14.dp, vertical = 6.dp)
+                    .clickable {  }
+                    .width(300.dp),
                 horizontalAlignment = Alignment.Start) {
                 Text(
+                    color = Color(0xFFB9B9B9),
                     text = jobs.company,
                     style = MaterialTheme.typography.h6)
                 Text(
                     text = jobs.description,
                     style = MaterialTheme.typography.subtitle1)
                 Text(
+                    modifier = Modifier.padding(top = 10.dp),
+                    fontWeight = FontWeight.Bold,
                     text = formatDate(jobs.dateTime.time),
                     style = MaterialTheme.typography.subtitle2)
             }
-            Icon(
-                imageVector = Icons.Rounded.Delete,
-                contentDescription = "Delete icon",
-                modifier = Modifier
-                    .padding(top = 50.dp, end = 5.dp)
-                    .clickable {
-                        onDeleteJob(jobs)
-                    })
+            Column() {
+                Icon(
+                    imageVector = Icons.Rounded.AdsClick,
+                    contentDescription = "Tick Icon",
+                    modifier = Modifier
+                        .padding(top = 15.dp, bottom = 15.dp)
+                        .clickable {  })
+                Icon(
+                    imageVector = Icons.Rounded.Delete,
+                    contentDescription = "Delete icon",
+                    modifier = Modifier
+                        .padding(top = 1.dp, end = 15.dp)
+                        .clickable {
+                            onDeleteJob(jobs)
+                        })
+            }
+
         }
 
     }
